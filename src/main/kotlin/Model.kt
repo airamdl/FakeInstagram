@@ -5,5 +5,6 @@ val sugerencias = listOf<Sugerencias>(
     Sugerencias("image5.jpeg", "Roberto", "Acosta"),
     Sugerencias("image7.jpeg", "Rodolfo", "De León"),
 )
+val historias = listOf("image2.jpeg", "image4.jpeg", "image6.jpeg", "image8.jpeg", "image9.jpeg" )
 
 data class
