@@ -1,5 +1,6 @@
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
@@ -20,10 +21,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 @Composable
 fun Titulo() {
     Text("Fake Instagram by Airam")
+
 }
 
 @Composable
@@ -32,7 +35,7 @@ fun Historias(modifier: Modifier) {
     Row(modifier) {
         historias.forEach { historia ->
             Box(
-                Modifier.size(width = 90.dp, height = 90.dp).padding(top = 15.dp),
+                Modifier.size(width = 90.dp, height = 90.dp).padding(top = 5.dp),
             ) {
                 Image(
                     modifier = Modifier.clip(CircleShape),
@@ -45,20 +48,35 @@ fun Historias(modifier: Modifier) {
 }
 
 @Composable
-fun Publicaciones() {
+fun Publicaciones(modifier: Modifier) {
     Text("Publicaciones")
+    Row(modifier) {
+        publicaciones.forEach { publicacion ->
+            Box(
+                Modifier.size(width = 300.dp, height = 300.dp).padding(top = 5.dp),
+            ) {
+                Image(
+                    modifier = Modifier.clip(CircleShape),
+                    painter = painterResource(resourcePath = publicacion),
+                    contentDescription = "Fotito"
+                )
+            }
+        }
+    }
+
 }
 
 @Composable
 fun Sugerencias(modifier: Modifier) {
     Text("Sugerencias")
     Column (
-        modifier,
+        modifier.background(color = Color.LightGray),
+
     ){
         Text("Personas que quizas Conozcas")
         sugerencias.forEach{ sugerencia ->
             Row(
-                Modifier.padding(top = 20.dp)
+                Modifier.padding(top = 10.dp)
             ) {
                 Image(
                     modifier = Modifier.clip(CircleShape).size(width = 32.dp, height = 32.dp),
@@ -76,16 +94,16 @@ fun Sugerencias(modifier: Modifier) {
 
 @Composable
 fun Cuerpo(modifier: Modifier) {
-    Row(modifier = modifier) {
+    Row(modifier = modifier, horizontalArrangement = Arrangement.SpaceBetween ) {
         Column(
             modifier = Modifier.padding(start = 25.dp)
         ) {
-            Publicaciones()
+            Publicaciones(Modifier.padding(top = 10.dp))
         }
         Column(
             modifier = Modifier.padding(start = 25.dp, end = 25.dp)
         ) {
-            Sugerencias(Modifier.padding(top = 20.dp))
+            Sugerencias(Modifier.padding(top = 10.dp))
         }
     }
 }
@@ -95,7 +113,7 @@ fun App() {
     Column {
         Titulo()
         Historias(Modifier.padding(start = 15.dp, end = 15.dp))
-        Cuerpo(Modifier.fillMaxWidth().padding(top = 30.dp))
+        Cuerpo(Modifier.fillMaxWidth().padding(top = 25.dp))
     }
 }
 
