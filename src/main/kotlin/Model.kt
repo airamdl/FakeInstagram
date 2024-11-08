@@ -7,4 +7,5 @@ val sugerencias = listOf<Sugerencias>(
 )
 val historias = listOf("image2.jpeg", "image4.jpeg", "image6.jpeg", "image8.jpeg", "image9.jpeg" )
 
-data class
+data class Publicaciones(val image:String,val name:String,val imageprofile:String)
+//val publicaciones =
